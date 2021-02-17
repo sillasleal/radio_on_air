@@ -6,7 +6,9 @@ export default function InputSearch() {
   const [value, setValue] = useState("");
   const onChange = ({ target: { value } }) => setValue(value);
   const onClick = () => {
-    router.push(`/search?param=${value}`);
+    if (value) {
+      router.push(`/search?param=${value}`);
+    }
   };
   const onKeyUp = ({ key }) => (key === "Enter" ? onClick() : null);
   useEffect(() => {
