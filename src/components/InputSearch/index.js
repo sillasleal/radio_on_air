@@ -17,7 +17,12 @@ export default function InputSearch() {
   /**/
   return (
     <div>
-      <input value={value} onChange={onChange} onKeyUp={onKeyUp} />
+      <input
+        name="podcast"
+        value={value}
+        onChange={onChange}
+        onKeyUp={onKeyUp}
+      />
       <button onClick={onClick}>Buscar</button>
     </div>
   );
