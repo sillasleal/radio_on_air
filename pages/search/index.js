@@ -1,7 +1,22 @@
+import axios from "axios";
 import InputSearch from "../../src/components/InputSearch";
 
-export default function Search() {
-  const podcasts = [];
+export async function getServerSideProps(context) {
+  let podcasts = [];
+  try {
+    const response = await axios.get(
+      `https://itunes.apple.com/search?term=${context.query.param}&entity=podcast`
+    );
+    podcasts = response.data.results;
+  } catch (error) {
+    console.error(error);
+  }
+  return {
+    props: { podcasts },
+  };
+}
+
+export default function Search({ podcasts }) {
   /**/
   return (
     <div>
@@ -11,12 +26,16 @@ export default function Search() {
         <thead>
           <tr>
             <th>Podcast</th>
+            <th>Capa</th>
           </tr>
         </thead>
         <tbody>
           {podcasts.map((podcast, key) => (
             <tr key={key}>
-              <td></td>
+              <td>{podcast.collectionName}</td>
+              <td>
+                <img src={podcast.artworkUrl30} />
+              </td>
             </tr>
           ))}
         </tbody>
