@@ -34,7 +34,7 @@ export default function Search({ podcasts }: {podcasts: IPodcast[]}) {
               <tr key={key}>
                 <td>{podcast.name}</td>
                 <td>
-                  <img src={podcast.artwork.url100} />
+                  <img src={podcast.artwork.url100.toString()} />
                 </td>
               </tr>
             ))}
