@@ -17,10 +17,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "baseUrl": ".",
     "paths": {
       "@pages/*": ["./pages/*"],
       "@components/*":["./src/components/*"],
       "@core/*":["./src/core/*"],
+      "@ultils/*":["./src/core/ultils/*"],
       "@configs/*":["./src/configs/*"],
     }
   },
