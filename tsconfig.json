@@ -23,6 +23,8 @@
       "@components/*":["./src/components/*"],
       "@core/*":["./src/core/*"],
       "@ultils/*":["./src/core/ultils/*"],
+      "@repository/*":["./src/core/repository/*"],
+      "@models/*":["./src/core/models/*"],
       "@configs/*":["./src/configs/*"],
     }
   },
