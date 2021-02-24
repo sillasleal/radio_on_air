@@ -1,4 +1,5 @@
 import IArtwork from './IArtwork';
+import IEpisode from './IEpisode';
 import IFeed from './IFeed';
 import IGenre from './IGenre';
 
@@ -8,6 +9,7 @@ export default interface IPodcast {
   releaseDate: Date;
   genre: IGenre;
   genres: IGenre[];
-  feed?: IFeed;
   artwork: IArtwork;
+  feed: IFeed;
+  episodes: IEpisode[];
 }

@@ -21,10 +21,11 @@
     "paths": {
       "@pages/*": ["./pages/*"],
       "@components/*":["./src/components/*"],
+      "@contexts/*":["./src/contexts/*"],
       "@core/*":["./src/core/*"],
       "@ultils/*":["./src/core/ultils/*"],
       "@repository/*":["./src/core/repository/*"],
-      "@models/*":["./src/core/models/*"],
+      "@interfaces/*":["./src/core/interfaces/*"],
       "@configs/*":["./src/configs/*"],
     }
   },

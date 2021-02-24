@@ -1,7 +1,7 @@
 import IPodcast from '@core/interfaces/IPodcast';
 import PodcastService from '@core/services/PodcastService';
-import axios from 'axios';
 import InputSearch from '../../src/components/InputSearch';
+import Link from 'next/link';
 
 export async function getServerSideProps(context) {
   let podcasts: IPodcast[] = [];
@@ -15,7 +15,7 @@ export async function getServerSideProps(context) {
   };
 }
 
-export default function Search({ podcasts }: {podcasts: IPodcast[]}) {
+export default function Search({ podcasts }: { podcasts: IPodcast[] }) {
   /**/
   return (
     <div>
@@ -32,7 +32,11 @@ export default function Search({ podcasts }: {podcasts: IPodcast[]}) {
           <tbody>
             {podcasts.map((podcast, key) => (
               <tr key={key}>
-                <td>{podcast.name}</td>
+                <td>
+                  <Link href={`/podcast/${podcast.id}`}>
+                    <a>{podcast.name}</a>
+                  </Link>
+                </td>
                 <td>
                   <img src={podcast.artwork.url100.toString()} />
                 </td>
