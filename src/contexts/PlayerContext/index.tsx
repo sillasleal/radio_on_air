@@ -2,6 +2,7 @@ import { Children, Consumer, createContext, FC, useEffect, useMemo, useState } f
 import IEpisode from '@interfaces/IEpisode';
 import { stat } from 'fs';
 import { audioTimeToString } from '@core/ultils/DateTime';
+import IPodcast from '@core/interfaces/IPodcast';
 
 export enum Status {
   START = 3,
@@ -16,7 +17,8 @@ export type Props = {
   play: () => void;
   pause: () => void;
   stop: () => void;
-  playEpisode: (episode: IEpisode) => void;
+  podcast: IPodcast | undefined;
+  playEpisode: (episode: IEpisode, podcast: IPodcast) => void;
   episodeTime: string;
   audio: undefined | HTMLAudioElement;
 };
@@ -28,20 +30,24 @@ const PlayerContext = createContext<Props>({
   play: () => {},
   pause: () => {},
   stop: () => {},
-  playEpisode: (episode: IEpisode) => undefined,
+  podcast: undefined,
+  playEpisode: (episode: IEpisode, podcast: IPodcast) => undefined,
   episodeTime: '',
   audio: undefined
 });
 
 export function PlayerProvider({ children }) {
   const [audio, setAudio] = useState<undefined | HTMLAudioElement>();
+  const [podcast, setPodcast] = useState<IPodcast | undefined>();
   const [episode, setEpisode] = useState<IEpisode | undefined>();
   const [status, setStatus] = useState<Status>(Status.STOP);
   const [episodeTime, setEpisodeTime] = useState<string>('');
   /**/
-  const playEpisode = (episode: IEpisode) => {
+  const playEpisode = (episode: IEpisode, podcast: IPodcast) => {
+    stop();
     setStatus(Status.START);
     setEpisode(episode);
+    setPodcast(podcast);
   };
   const play = () => setStatus(Status.PLAY);
   const pause = () => setStatus(Status.PAUSE);
@@ -86,6 +92,7 @@ export function PlayerProvider({ children }) {
     episode,
     status,
     episodeTime,
+    podcast,
     stop,
     play,
     pause,

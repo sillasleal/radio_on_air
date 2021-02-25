@@ -32,7 +32,7 @@ export default function Podcast({ podcast }: Props) {
             <h4>{episode.title}</h4>
             <label>Duração: {episode.duration}</label>-
             <label>Publicado em: {episode.pubDate.toString()}</label>-
-            <button onClick={() => player.playEpisode(episode)}>Play</button>
+            <button onClick={() => player.playEpisode(episode, podcast)}>Play</button>
             <img width="100" src={episode.image.toString()} />
             <hr />
           </div>
