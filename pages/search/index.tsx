@@ -1,22 +1,21 @@
-import axios from "axios";
-import InputSearch from "../../src/components/InputSearch";
+import IPodcast from '@core/interfaces/IPodcast';
+import PodcastService from '@core/services/PodcastService';
+import InputSearch from '../../src/components/InputSearch';
+import Link from 'next/link';
 
 export async function getServerSideProps(context) {
-  let podcasts = [];
+  let podcasts: IPodcast[] = [];
   try {
-    const response = await axios.get(
-      `https://itunes.apple.com/search?term=${context.query.param}&entity=podcast`
-    );
-    podcasts = response.data.results;
+    podcasts = await PodcastService.search(context.query.param);
   } catch (error) {
     console.error(error);
   }
   return {
-    props: { podcasts },
+    props: { podcasts }
   };
 }
 
-export default function Search({ podcasts }) {
+export default function Search({ podcasts }: { podcasts: IPodcast[] }) {
   /**/
   return (
     <div>
@@ -33,9 +32,13 @@ export default function Search({ podcasts }) {
           <tbody>
             {podcasts.map((podcast, key) => (
               <tr key={key}>
-                <td>{podcast.collectionName}</td>
                 <td>
-                  <img src={podcast.artworkUrl30} />
+                  <Link href={`/podcast/${podcast.id}`}>
+                    <a>{podcast.name}</a>
+                  </Link>
+                </td>
+                <td>
+                  <img src={podcast.artwork.url100.toString()} />
                 </td>
               </tr>
             ))}
