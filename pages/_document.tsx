@@ -26,6 +26,8 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <title>Radio On Air</title>
+          <link rel="icon" href="/favicon.ico" />
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link
             rel="stylesheet"

@@ -3,8 +3,8 @@ import { PlayerProvider } from '@contexts/PlayerContext';
 import type { AppProps /*, AppContext */ } from 'next/app';
 import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Head from 'next/head';
 import theme from '../src/theme';
+import Container from '@material-ui/core/Container';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -12,8 +12,8 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <PlayerProvider>
           <CssBaseline />
-          <PlayerToolbar />
           <Component {...pageProps} />
+          <PlayerToolbar />
         </PlayerProvider>
       </ThemeProvider>
     </>
