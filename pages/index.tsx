@@ -3,13 +3,15 @@ import AppBar from '@material-ui/core/AppBar';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import InputSearch from '@components/InputSearch';
+import Logo from '@components/Logo';
 
 const useStyles = makeStyles({
   header: {
     padding: 30
   },
   title: {
-    fontWeight: 'bolder'
+    fontWeight: 'bolder',
+    color: '#AA0000'
   },
   searchGridRoot: {
     marginTop: 70
@@ -21,9 +23,10 @@ export default function Home() {
   return (
     <>
       <AppBar position="static" className={classes.header}>
-        <Typography variant="h5" align="center" className={classes.title} noWrap>
-          RadioOnAir
+        <Typography variant="h1" align="center" className={classes.title} noWrap>
+          Radio
         </Typography>
+        <Logo />
       </AppBar>
       {/* <Grid spacing={3} className={classes.searchGridRoot}>
        

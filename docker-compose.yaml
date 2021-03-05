@@ -1,0 +1,9 @@
+version: '3.0'
+services:
+  next:
+    image: node:14
+    volumes:
+      - .:/home/node/web
+    command: npm --prefix /home/node/web run dev
+    ports:
+      - 3000:3000
